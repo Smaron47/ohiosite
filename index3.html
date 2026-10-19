@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OHIO Pro Care Services - Ohio City Plumbing, Drains & Water Heaters</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            navy: '#0b132b',
+                            dark: '#1c2541',
+                            blue: '#0052ff',
+                            electric: '#00d2ff',
+                            cyan: '#00f2fe',
+                            gold: '#fbbf24',
+                            emerald: '#10b981'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2.5s infinite ease-in-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient-x': 'gradientX 8s ease infinite',
+                        'ticker': 'ticker 28s linear infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(0, 210, 255, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(0, 242, 254, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        gradientX: {
+                            '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+                            '50%': { 'background-size': '200% 200%', 'background-position': 'right center' }
+                        },
+                        ticker: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS Styles & Dynamic Theme Variables -->
+    <style type="text/css">
+        /* Glassmorphism Dynamic Styles for Dark/Light Mode */
+        .dark .glass-nav {
+            background: rgba(11, 19, 43, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.15);
+        }
+        .light .glass-nav {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(0, 82, 255, 0.12);
+        }
+
+        .dark .glass-card {
+            background: rgba(28, 37, 65, 0.65);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 82, 255, 0.12);
+            box-shadow: 0 10px 30px 0 rgba(0, 82, 255, 0.08);
+        }
+
+        .dark .mesh-bg {
+            background-color: #0b132b;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 82, 255, 0.25) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 242, 254, 0.2) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(58, 134, 255, 0.15) 0px, transparent 50%);
+        }
+        .light .mesh-bg {
+            background-color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(0, 82, 255, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 210, 255, 0.1) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(241, 245, 249, 0.8) 0px, transparent 50%);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #0052ff 0%, #00d2ff 50%, #00f2fe 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gradient-btn {
+            background: linear-gradient(135deg, #0052ff 0%, #00d2ff 100%);
+            transition: all 0.3s ease;
+        }
+        .gradient-btn:hover {
+            background: linear-gradient(135deg, #00d2ff 0%, #00f2fe 100%);
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Layout Switcher Floating Bar Styling */
+        .layout-switcher-bar {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+        }
+
+        /* Custom Before/After Slider */
+        .ba-slider-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+        }
+        .ba-after-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            overflow: hidden;
+            border-right: 3px solid #00d2ff;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans selection:bg-brand-electric selection:text-brand-navy overflow-x-hidden antialiased transition-colors duration-300">
+
+    <!-- FLOATING MULTI-LAYOUT CONTROL TOOLBAR (TOP DOCK) -->
+    <div class="sticky top-0 z-50 layout-switcher-bar text-white px-4 py-2.5 flex flex-wrap items-center justify-between shadow-2xl border-b border-cyan-500/20 text-xs">
+        <div class="flex items-center space-x-3 my-1">
+            <span class="flex h-2.5 w-2.5 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+            </span>
+            <span class="font-bold text-cyan-300 tracking-wider uppercase"><i class="fa-solid fa-layer-group mr-1.5"></i> Live Layout Switcher:</span>
+        </div>
+
+        <!-- Layout Buttons -->
+        <div class="flex items-center space-x-1.5 my-1 overflow-x-auto py-1">
+            <button onclick="switchLayout('index1')" id="btnIndex1" class="layout-btn px-3 py-1.5 rounded-lg bg-brand-blue text-white font-bold transition-all shadow-md flex items-center">
+                <i class="fa-solid fa-truck-fast mr-1.5"></i> Index 1: Emergency First
+            </button>
+            <button onclick="switchLayout('index2')" id="btnIndex2" class="layout-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all flex items-center">
+                <i class="fa-solid fa-calculator mr-1.5"></i> Index 2: Estimator & Services
+            </button>
+            <button onclick="switchLayout('index3')" id="btnIndex3" class="layout-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all flex items-center">
+                <i class="fa-solid fa-photo-film mr-1.5"></i> Index 3: Split Visual Showcase
+            </button>
+            <button onclick="switchLayout('index4')" id="btnIndex4" class="layout-btn px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 hover:text-white font-semibold transition-all flex items-center">
+                <i class="fa-solid fa-building-user mr-1.5"></i> Index 4: Corporate Minimal
+            </button>
+        </div>
+
+        <!-- Theme Toggle Switcher -->
+        <div class="flex items-center space-x-3 my-1">
+            <button onclick="toggleTheme()" class="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-bold flex items-center transition-colors">
+                <i id="themeIcon" class="fa-solid fa-sun text-amber-400 mr-2"></i>
+                <span id="themeLabel">Light Mode</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- 24/7 EMERGENCY TICKER BANNER -->
+    <div class="bg-gradient-to-r from-blue-900 via-brand-blue to-cyan-700 text-white text-xs sm:text-sm font-semibold overflow-hidden border-b border-cyan-500/20 py-2 relative z-40">
+        <div class="flex whitespace-nowrap animate-ticker">
+            <div class="flex items-center space-x-8 px-4">
+                <span class="flex items-center"><i class="fa-solid fa-bolt text-yellow-300 mr-2 animate-pulse"></i> 24/7 EMERGENCY DISPATCH ACTIVE IN OHIO CITY (44113)</span>
+                <span class="flex items-center"><i class="fa-solid fa-clock text-cyan-300 mr-2"></i> AVERAGE ARRIVAL TIME: 30-45 MINS</span>
+                <span class="flex items-center"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i> $85.50 DIAGNOSTIC FEE WAIVED ON REPAIRS</span>
+                <span class="flex items-center"><i class="fa-solid fa-phone text-white mr-2"></i> CALL DIRECT: (216) 888-CARE</span>
+            </div>
+            <div class="flex items-center space-x-8 px-4">
+                <span class="flex items-center"><i class="fa-solid fa-bolt text-yellow-300 mr-2 animate-pulse"></i> 24/7 EMERGENCY DISPATCH ACTIVE IN OHIO CITY (44113)</span>
+                <span class="flex items-center"><i class="fa-solid fa-clock text-cyan-300 mr-2"></i> AVERAGE ARRIVAL TIME: 30-45 MINS</span>
+                <span class="flex items-center"><i class="fa-solid fa-shield-halved text-emerald-400 mr-2"></i> $85.50 DIAGNOSTIC FEE WAIVED ON REPAIRS</span>
+                <span class="flex items-center"><i class="fa-solid fa-phone text-white mr-2"></i> CALL DIRECT: (216) 888-CARE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <nav class="glass-nav sticky top-[45px] z-40 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo -->
+                <a href="#" class="flex items-center space-x-3 group">
+                    <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-blue to-brand-electric flex items-center justify-center text-white text-2xl font-black shadow-lg shadow-brand-blue/30 group-hover:rotate-6 transition-transform">
+                        <i class="fa-solid fa-faucet-drip"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white flex items-center">
+                            OHIO <span class="text-brand-electric ml-1">PRO CARE</span>
+                        </span>
+                        <span class="text-[10px] tracking-widest text-cyan-600 dark:text-cyan-300 uppercase font-semibold">Plumbing, Drains & Heaters</span>
+                    </div>
+                </a>
+
+                <!-- Nav Links -->
+                <div class="hidden md:flex items-center space-x-8 text-sm font-semibold text-slate-700 dark:text-slate-200">
+                    <a href="#services" class="hover:text-brand-electric transition-colors py-2">Services</a>
+                    <a href="#estimator" class="hover:text-brand-electric transition-colors py-2">Cost Estimator</a>
+                    <a href="#beforeAfter" class="hover:text-brand-electric transition-colors py-2">Before & After</a>
+                    <a href="#coverage" class="hover:text-brand-electric transition-colors py-2">Coverage Map</a>
+                    <a href="#reviews" class="hover:text-brand-electric transition-colors py-2">Reviews</a>
+                </div>
+
+                <!-- Call & Booking Buttons -->
+                <div class="hidden sm:flex items-center space-x-4">
+                    <a href="tel:2168882273" class="flex items-center space-x-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-cyan-500/30 text-slate-900 dark:text-white hover:bg-cyan-500/10 transition-all">
+                        <i class="fa-solid fa-phone text-brand-electric"></i>
+                        <span class="text-xs font-bold">(216) 888-CARE</span>
+                    </a>
+                    <button onclick="openBookingModal()" class="gradient-btn px-5 py-2.5 rounded-xl font-bold text-sm text-white shadow-lg flex items-center space-x-2">
+                        <i class="fa-solid fa-calendar-check"></i>
+                        <span>Book Dispatch</span>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center space-x-2">
+                    <button onclick="toggleMobileMenu()" class="p-2.5 rounded-lg bg-slate-100 dark:bg-white/10 text-slate-800 dark:text-white">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden glass-nav border-t border-white/10 px-4 pt-4 pb-6 space-y-3">
+            <a href="#services" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-800 dark:text-slate-200 font-semibold">Services</a>
+            <a href="#estimator" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-800 dark:text-slate-200 font-semibold">Cost Calculator</a>
+            <a href="#beforeAfter" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-800 dark:text-slate-200 font-semibold">Before & After</a>
+            <a href="#coverage" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-800 dark:text-slate-200 font-semibold">Service Map</a>
+            <a href="#reviews" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-lg text-slate-800 dark:text-slate-200 font-semibold">Customer Reviews</a>
+            <button onclick="toggleMobileMenu(); openBookingModal()" class="w-full gradient-btn py-3 rounded-xl font-bold text-white text-center">
+                <i class="fa-solid fa-calendar-check mr-2"></i> Book Service Now
+            </button>
+        </div>
+    </nav>
+
+    <!-- CONTAINER FOR DYNAMIC HOMEPAGE INDEX LAYOUTS -->
+    <main id="layoutContainer">
+
+        <!-- ================= LAYOUT INDEX 1: EMERGENCY & LEAD GENERATION FIRST ================= -->
+        <section id="layoutIndex1" class="layout-view relative py-12 lg:py-24 mesh-bg overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 reveal active">
+                        <div class="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-cyan-500/10 border border-cyan-400/30 text-cyan-500 dark:text-cyan-300 text-xs font-bold">
+                            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
+                            <span>INDEX 1: Emergency & Rapid Dispatch Focus</span>
+                        </div>
+
+                        <h1 class="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white leading-tight">
+                            Ohio City's #1 Emergency <span class="gradient-text">Plumbing & Drain</span> Squad
+                        </h1>
+
+                        <p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed">
+                            Burst pipes, sewer back-ups, or freezing water heater? Our licensed master plumbers arrive in 45 minutes or less with upfront flat-rate pricing.
+                        </p>
+
+                        <!-- Open-Source Unsplash Visual Grid -->
+                        <div class="grid grid-cols-3 gap-3 pt-2">
+                            <div class="relative h-24 rounded-2xl overflow-hidden shadow-md group">
+                                <img src="https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=600&q=80" alt="Water Heater Repair" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+                                    <span class="text-[10px] font-bold text-white">Water Heaters</span>
+                                </div>
+                            </div>
+                            <div class="relative h-24 rounded-2xl overflow-hidden shadow-md group">
+                                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=600&q=80" alt="Drain Jetting" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+                                    <span class="text-[10px] font-bold text-white">Drain Jetting</span>
+                                </div>
+                            </div>
+                            <div class="relative h-24 rounded-2xl overflow-hidden shadow-md group">
+                                <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=600&q=80" alt="Emergency Plumbing" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-2">
+                                    <span class="text-[10px] font-bold text-white">Pipe Bursting</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+                            <button onclick="openBookingModal()" class="gradient-btn px-8 py-4 rounded-xl font-extrabold text-white text-base shadow-xl flex items-center justify-center space-x-3">
+                                <i class="fa-solid fa-truck-medical"></i>
+                                <span>Request Fast Dispatch</span>
+                            </button>
+                            <a href="tel:2168882273" class="px-8 py-4 rounded-xl font-bold text-slate-800 dark:text-white bg-slate-200 dark:bg-white/10 hover:bg-slate-300 transition-all flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-phone text-brand-electric"></i>
+                                <span>(216) 888-CARE</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Dispatch Hero Form -->
+                    <div class="lg:col-span-5 reveal active">
+                        <div class="glass-card rounded-3xl p-6 sm:p-8 border border-cyan-500/30 shadow-2xl relative">
+                            <div class="mb-4">
+                                <span class="text-xs font-bold text-brand-electric uppercase tracking-widest">24/7 Priority Queue</span>
+                                <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">Instant Plumbing Dispatch</h3>
+                            </div>
+                            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Issue Category</label>
+                                    <select required class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-white">
+                                        <option value="Emergency Water Leak">Emergency Water Leak / Pipe Burst</option>
+                                        <option value="Clogged Sewer Drain">Clogged Drain / Sewer Backup</option>
+                                        <option value="Water Heater Failure">Water Heater Not Heating</option>
+                                        <option value="Toilet Fixture Overflow">Toilet / Fixture Overflow</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Your Name</label>
+                                    <input type="text" required placeholder="John Doe" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-white">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Phone Number (For Live SMS Dispatch)</label>
+                                    <input type="tel" required placeholder="(216) 000-0000" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-white">
+                                </div>
+                                <button type="submit" class="w-full gradient-btn py-4 rounded-xl font-bold text-white text-base shadow-lg">
+                                    Send Technician to My Address
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LAYOUT INDEX 2: INTERACTIVE ESTIMATOR & SERVICE HUB ================= -->
+        <section id="layoutIndex2" class="layout-view hidden relative py-12 lg:py-24 mesh-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="px-4 py-1.5 rounded-full bg-cyan-500/10 text-cyan-600 dark:text-cyan-300 text-xs font-bold uppercase tracking-widest border border-cyan-500/20">INDEX 2: Interactive Service Hub</span>
+                    <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white mt-3">Smart Cost Calculator & Solution Picker</h1>
+                    <p class="text-slate-600 dark:text-slate-300 text-base mt-2">Get real-time estimates before booking your Ohio City plumbing service.</p>
+                </div>
+
+                <!-- Unsplash Hero Banner for Index 2 -->
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl mb-12 h-64 sm:h-80">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&w=1600&q=80" alt="Certified Technician" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy/95 via-brand-navy/70 to-transparent flex items-center p-8 sm:p-12">
+                        <div class="max-w-md space-y-3">
+                            <span class="text-yellow-400 font-bold text-xs uppercase"><i class="fa-solid fa-star"></i> Guaranteed Fixed Pricing</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">No Hidden Upcharges. Guaranteed.</h2>
+                            <p class="text-xs sm:text-sm text-slate-300">We inspect with video cameras and present total cost upfront before touching a single pipe.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LAYOUT INDEX 3: SPLIT VISUAL SHOWCASE & MEDIA ================= -->
+        <section id="layoutIndex3" class="layout-view hidden relative py-12 lg:py-24 mesh-bg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                    
+                    <div class="space-y-6">
+                        <span class="px-4 py-1.5 rounded-full bg-purple-500/10 text-purple-600 dark:text-purple-300 text-xs font-bold uppercase tracking-widest border border-purple-500/20">INDEX 3: Visual Story & Project Showcase</span>
+                        <h1 class="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white leading-tight">
+                            Master Craftsmanship You Can See & Trust
+                        </h1>
+                        <p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed">
+                            Explore our recent master plumbing installs, tankless conversions, and high-pressure sewer restoration projects across Cleveland and Ohio City.
+                        </p>
+
+                        <div class="space-y-4">
+                            <div class="p-4 rounded-2xl glass-card flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=200&q=80" alt="Modern Bathroom" class="w-16 h-16 rounded-xl object-cover">
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">Luxury Bathroom Fixtures</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Custom valves, rain showerheads & free-standing tub rough-ins.</p>
+                                </div>
+                            </div>
+                            <div class="p-4 rounded-2xl glass-card flex items-center space-x-4">
+                                <img src="https://images.unsplash.com/photo-1542013936693-884638332954?auto=format&fit=crop&w=200&q=80" alt="Kitchen Plumbing" class="w-16 h-16 rounded-xl object-cover">
+                                <div>
+                                    <h4 class="font-bold text-slate-900 dark:text-white text-sm">Commercial Drain Lines</h4>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400">Heavy duty grease trap and main sewer jetting.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80" alt="Plumbing Work" class="rounded-3xl shadow-lg w-full h-64 object-cover">
+                        <img src="https://images.unsplash.com/photo-1607472586893-edb57bdc0e39?auto=format&fit=crop&w=600&q=80" alt="Tools" class="rounded-3xl shadow-lg w-full h-64 object-cover mt-8">
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= LAYOUT INDEX 4: MINIMAL CORPORATE ================= -->
+        <section id="layoutIndex4" class="layout-view hidden relative py-16 lg:py-28 mesh-bg">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+                <span class="px-4 py-1.5 rounded-full bg-slate-800 text-slate-300 text-xs font-bold uppercase tracking-widest border border-slate-700">INDEX 4: Corporate Minimalist</span>
+                <h1 class="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tight">
+                    Reliable Plumbing Infrastructure For Ohio City Homes & Businesses
+                </h1>
+                <p class="text-slate-600 dark:text-slate-300 text-lg max-w-2xl mx-auto">
+                    Commercial & residential plumbing, backflow prevention, water heater lifecycle management, and licensed hydro-inspection.
+                </p>
+
+                <div class="pt-6 flex justify-center gap-4">
+                    <button onclick="openBookingModal()" class="gradient-btn px-8 py-4 rounded-xl font-bold text-white shadow-xl">
+                        Schedule Commercial Audit
+                    </button>
+                    <a href="tel:2168882273" class="px-8 py-4 rounded-xl font-bold text-slate-800 dark:text-white bg-slate-200 dark:bg-white/10">
+                        Direct Corporate Line
+                    </a>
+                </div>
+
+                <!-- Unsplash Grid Corporate -->
+                <div class="pt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <i class="fa-solid fa-building text-3xl text-brand-electric mb-3"></i>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Commercial Maintenance</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Scheduled backflow testing, high-volume water heaters, and multi-unit drain clearance.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <i class="fa-solid fa-house-chimney-crack text-3xl text-emerald-400 mb-3"></i>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Residential Repiping</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Upgrading historical Ohio City homes with whole-house PEX supply lines.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <i class="fa-solid fa-shield-virus text-3xl text-purple-400 mb-3"></i>
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base">Sewer Camera Audits</h3>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mt-2">Full HD video pipeline mapping with instant digital report delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= SHARED INTERACTIVE COST ESTIMATOR ================= -->
+        <section id="estimator" class="py-20 border-t border-slate-200 dark:border-white/5 relative z-10">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-10">
+                    <span class="text-brand-electric text-xs font-bold uppercase tracking-widest">Instant Pricing Tool</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Plumbing Repair Cost Calculator</h2>
+                </div>
+
+                <div class="glass-card rounded-3xl p-6 sm:p-10 border border-brand-electric/30">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Select Service</label>
+                                <select id="estService" onchange="recalculateCost()" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-white">
+                                    <option value="drain">Drain Cleaning & Unclogging</option>
+                                    <option value="waterheater">Water Heater Repair / Tankless</option>
+                                    <option value="leak">Non-Invasive Leak Detection</option>
+                                    <option value="toilet">Toilet / Faucet Installation</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 dark:text-slate-300 mb-1">Urgency</label>
+                                <select id="estUrgency" onchange="recalculateCost()" class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-3 text-sm text-slate-800 dark:text-white">
+                                    <option value="standard">Standard Scheduled Visit</option>
+                                    <option value="sameday">Same-Day Priority (+15%)</option>
+                                    <option value="emergency">24/7 Midnight Emergency (+25%)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="bg-slate-100 dark:bg-slate-900/80 p-6 rounded-2xl text-center border border-slate-300 dark:border-white/10">
+                            <span class="text-xs font-bold text-slate-500 uppercase">Estimated Price Range</span>
+                            <div id="estPrice" class="text-4xl font-black text-brand-electric my-2">$145 - $280</div>
+                            <p id="estDetails" class="text-xs text-slate-500 dark:text-slate-400 mb-4">Includes HD camera diagnostic & rooter clearing.</p>
+                            <button onclick="openBookingModal()" class="w-full gradient-btn py-3 rounded-xl font-bold text-white text-xs uppercase">
+                                Lock In Price & Book Dispatch
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= BEFORE & AFTER SLIDER SECTION ================= -->
+        <section id="beforeAfter" class="py-20 mesh-bg border-t border-slate-200 dark:border-white/5">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Visual Work Quality</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Drag To Compare Before & After</h2>
+                </div>
+
+                <!-- Interactive Comparison Container -->
+                <div class="ba-slider-container h-80 sm:h-[450px] shadow-2xl relative select-none">
+                    <!-- Before Image (Underneath) -->
+                    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1200&q=80" alt="Before Plumbing Repair" class="absolute inset-0 w-full h-full object-cover">
+                    <span class="absolute top-4 left-4 bg-red-600 text-white font-black text-xs px-3 py-1 rounded-full z-10">BEFORE REPAIR</span>
+
+                    <!-- After Image (Clipped Overlay) -->
+                    <div id="afterSliderImg" class="ba-after-img">
+                        <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=1200&q=80" alt="After Master Install" class="absolute inset-0 w-full h-full object-cover max-w-none" style="width: 100%;">
+                        <span class="absolute top-4 right-4 bg-emerald-600 text-white font-black text-xs px-3 py-1 rounded-full z-10">AFTER PRO CARE</span>
+                    </div>
+
+                    <!-- Range Control Overlay -->
+                    <input type="range" min="0" max="100" value="50" oninput="slideBeforeAfter(this.value)" class="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-30">
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= REVIEWS SECTION ================= -->
+        <section id="reviews" class="py-20 border-t border-slate-200 dark:border-white/5">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-12">
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-widest"><i class="fa-solid fa-star"></i> 4.9/5 Rating (480+ Reviews)</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Trusted By Ohio City Neighbors</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex text-amber-400 text-xs mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 italic mb-4">"Arrived in under 30 minutes at 2:00 AM when our main line backed up. Super professional and fair price!"</p>
+                        <div class="text-xs font-bold text-slate-900 dark:text-white">- Sarah T., Ohio City</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex text-amber-400 text-xs mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 italic mb-4">"Converted our old bulky tank to a Navien tankless system. Unlimited hot water and saved money on gas!"</p>
+                        <div class="text-xs font-bold text-slate-900 dark:text-white">- Mark D., Franklin Blvd</div>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl">
+                        <div class="flex text-amber-400 text-xs mb-3"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 italic mb-4">"Honest pricing upfront. $85.50 diagnostic was completely waived when they cleared the drain clog."</p>
+                        <div class="text-xs font-bold text-slate-900 dark:text-white">- Elena R., Bridge Ave</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 border-t border-white/10 pt-12 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <span class="font-extrabold text-lg text-white">OHIO <span class="text-brand-electric">PRO CARE</span></span>
+                    <p class="text-xs text-slate-500 mt-2">Licensed Master Plumbers serving Ohio City & Cleveland Metro.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase mb-3">Services</h4>
+                    <ul class="text-xs space-y-1.5">
+                        <li>Emergency Water Leak</li>
+                        <li>Hydro Jetting Drain Service</li>
+                        <li>Tankless Water Heaters</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase mb-3">Coverage</h4>
+                    <ul class="text-xs space-y-1.5">
+                        <li>Ohio City (44113)</li>
+                        <li>Tremont & Detroit Shoreway</li>
+                        <li>Downtown Cleveland</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold text-xs uppercase mb-3">24/7 Hotline</h4>
+                    <div class="text-brand-electric font-black text-lg">(216) 888-CARE</div>
+                </div>
+            </div>
+            <div class="text-[11px] text-slate-600 border-t border-white/5 pt-6 text-center">
+                &copy; 2026 OHIO Pro Care Services. Master Plumbing License #48921.
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div id="bookingModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+        <div class="glass-card rounded-3xl w-full max-w-md p-6 relative border border-cyan-400/40 shadow-2xl">
+            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 class="text-2xl font-black text-slate-900 dark:text-white mb-2">Book Service Dispatch</h3>
+            <form onsubmit="handleFormSubmit(event)" class="space-y-3">
+                <input type="text" placeholder="Full Name" required class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-800 dark:text-white">
+                <input type="tel" placeholder="Phone Number" required class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-800 dark:text-white">
+                <select required class="w-full bg-slate-100 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 rounded-xl px-4 py-2.5 text-xs text-slate-800 dark:text-white">
+                    <option value="Emergency">ASAP Emergency Dispatch</option>
+                    <option value="Scheduled">Scheduled Visit</option>
+                </select>
+                <button type="submit" class="w-full gradient-btn py-3 rounded-xl font-bold text-white text-xs">
+                    Confirm Booking Request
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT CONTROLLERS -->
+    <script>
+        // Theme Switcher Logic (Dark/Light Mode)
+        function toggleTheme() {
+            const html = document.documentElement;
+            const icon = document.getElementById('themeIcon');
+            const label = document.getElementById('themeLabel');
+
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                html.classList.add('light');
+                icon.className = 'fa-solid fa-moon text-indigo-600 mr-2';
+                label.innerText = 'Dark Mode';
+            } else {
+                html.classList.remove('light');
+                html.classList.add('dark');
+                icon.className = 'fa-solid fa-sun text-amber-400 mr-2';
+                label.innerText = 'Light Mode';
+            }
+        }
+
+        // Layout Index Switcher Logic (Index 1, 2, 3, 4)
+        function switchLayout(layoutId) {
+            // Hide all layout views
+            document.querySelectorAll('.layout-view').forEach(view => {
+                view.classList.add('hidden');
+            });
+
+            // Show selected layout
+            const activeView = document.getElementById('layout' + layoutId.charAt(0).toUpperCase() + layoutId.slice(1));
+            if (activeView) {
+                activeView.classList.remove('hidden');
+            }
+
+            // Update toolbar button states
+            document.querySelectorAll('.layout-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-blue', 'text-white');
+                btn.classList.add('bg-slate-800', 'text-slate-300');
+            });
+
+            const activeBtn = document.getElementById('btn' + layoutId.charAt(0).toUpperCase() + layoutId.slice(1));
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-slate-800', 'text-slate-300');
+                activeBtn.classList.add('bg-brand-blue', 'text-white');
+            }
+        }
+
+        // Before & After Interactive Slider Handler
+        function slideBeforeAfter(val) {
+            const afterImg = document.getElementById('afterSliderImg');
+            if (afterImg) {
+                afterImg.style.width = val + '%';
+            }
+        }
+
+        // Cost Calculator Dynamic Pricing Engine
+        function recalculateCost() {
+            const service = document.getElementById('estService').value;
+            const urgency = document.getElementById('estUrgency').value;
+
+            let baseMin = 145;
+            let baseMax = 280;
+            let note = "Includes HD camera diagnostic & rooter clearing.";
+
+            if (service === 'waterheater') {
+                baseMin = 220; baseMax = 650;
+                note = "Thermal diagnostic, flush, or tankless component check.";
+            } else if (service === 'leak') {
+                baseMin = 180; baseMax = 390;
+                note = "Non-invasive acoustic & thermal image location scan.";
+            } else if (service === 'toilet') {
+                baseMin = 125; baseMax = 260;
+                note = "Standard toilet, faucet, or garbage disposal fit.";
+            }
+
+            if (urgency === 'sameday') {
+                baseMin = Math.round(baseMin * 1.15);
+                baseMax = Math.round(baseMax * 1.15);
+            } else if (urgency === 'emergency') {
+                baseMin = Math.round(baseMin * 1.25);
+                baseMax = Math.round(baseMax * 1.25);
+            }
+
+            document.getElementById('estPrice').innerText = `$${baseMin} - $${baseMax}`;
+            document.getElementById('estDetails').innerText = note;
+        }
+
+        // Booking Modal Handlers
+        function openBookingModal() {
+            document.getElementById('bookingModal').classList.remove('hidden');
+        }
+
+        function closeBookingModal() {
+            document.getElementById('bookingModal').classList.add('hidden');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            closeBookingModal();
+            alert('Thank you! Your dispatch request has been logged. An Ohio City technician will call you within 5 minutes.');
+        }
+
+        // Scroll Reveal Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>

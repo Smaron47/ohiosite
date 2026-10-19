@@ -1,0 +1,673 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7fbf9">
+<title>Ohio Pro Care Services | Compassionate Care at Home</title>
+<meta name="description" content="Discover compassionate, personalized care and everyday support for your loved ones. Contact Ohio Pro Care Services to discuss care options.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<style>
+:root{
+ --bg:#f7faf8;--surface:#fff;--text:#17352f;--muted:#6e817b;
+ --green:#087f68;--green2:#12aa88;--lime:#c7f36b;
+ --border:rgba(23,53,47,.10);--shadow:0 18px 55px rgba(22,66,52,.09);
+ --radius:24px;--nav:rgba(247,250,248,.83);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:100px}
+body{font-family:"DM Sans",sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden;transition:background .3s,color .3s}
+body.dark{
+ --bg:#0b1714;--surface:#13231e;--text:#e9f6ef;--muted:#a0b6ab;
+ --green:#39c6a1;--green2:#66dfba;--lime:#d4f987;
+ --border:rgba(232,255,242,.1);--shadow:0 20px 60px rgba(0,0,0,.25);--nav:rgba(11,23,20,.85)
+}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:min(1160px,calc(100% - 40px));margin:auto}
+section{padding:100px 0;position:relative}
+h1,h2,h3{font-family:Manrope,sans-serif;line-height:1.15;letter-spacing:-.045em}
+h1{font-size:clamp(2.8rem,6vw,5.1rem);font-weight:800}
+h2{font-size:clamp(2.1rem,4vw,3.35rem);font-weight:800}
+h3{font-size:1.3rem}
+p{color:var(--muted)}
+.gradient-text{background:linear-gradient(100deg,var(--green),#25b89a 50%,#92b94e);background-clip:text;-webkit-background-clip:text;color:transparent}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:.77rem;font-weight:800;text-transform:uppercase;letter-spacing:.15em;color:var(--green);margin-bottom:19px}
+.eyebrow:before{content:"";width:24px;height:2px;background:var(--green)}
+.btn{display:inline-flex;justify-content:center;align-items:center;gap:10px;padding:14px 22px;border-radius:999px;border:1px solid transparent;font-weight:700;font-size:.92rem;transition:transform .25s,box-shadow .25s,background .25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 28px #087f6828}
+.btn-primary{background:linear-gradient(120deg,#087f68,#12aa88);color:white}
+.btn-secondary{border-color:var(--border);background:var(--surface);color:var(--text)}
+.btn-lime{background:var(--lime);color:#17352f}
+.topbar{background:#123c32;color:white;padding:9px 0;font-size:.79rem}
+.topbar-inner{display:flex;justify-content:space-between;gap:15px;align-items:center}
+.topbar a{font-weight:700}
+.nav-wrap{position:sticky;top:0;z-index:50;background:var(--nav);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:11px;font-family:Manrope,sans-serif;font-weight:800;font-size:1.03rem;line-height:1.15}
+.brand-icon{width:43px;height:43px;border-radius:15px;background:linear-gradient(135deg,#087f68,#34c5a0);color:white;display:grid;place-items:center;font-size:1.2rem;box-shadow:0 7px 18px #087f6830}
+.brand small{display:block;color:var(--muted);font-size:.66rem;font-weight:600;letter-spacing:.04em;margin-top:4px}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:.88rem;font-weight:600}
+.nav-links a:not(.btn):hover{color:var(--green)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--border);background:var(--surface);color:var(--text);display:grid;place-items:center}
+.menu-toggle{display:none}
+.hero{padding:70px 0 88px;overflow:hidden}
+.hero:before{content:"";position:absolute;width:650px;height:650px;right:-170px;top:-200px;border-radius:50%;background:radial-gradient(circle,#8ee8c64a 0%,#a9f3d01d 40%,transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:45px;align-items:center}
+.hero-copy{position:relative;z-index:2}
+.hero-copy h1{margin-bottom:24px}
+.hero-copy>p{font-size:1.08rem;max-width:510px;margin-bottom:29px}
+.hero-buttons{display:flex;flex-wrap:wrap;gap:12px}
+.trust-row{display:flex;align-items:center;gap:16px;margin-top:35px;flex-wrap:wrap}
+.avatars{display:flex;padding-left:4px}
+.avatars img{width:39px;height:39px;object-fit:cover;border:3px solid var(--bg);border-radius:50%;margin-left:-7px}
+.trust-copy{font-size:.82rem;font-weight:700}
+.trust-copy span{display:block;color:var(--muted);font-weight:500}
+.hero-visual{position:relative;min-height:490px}
+.hero-image{position:absolute;inset:0 0 0 24px;width:calc(100% - 24px);height:100%;object-fit:cover;border-radius:45% 45% 28px 28px;box-shadow:var(--shadow)}
+.hero-visual:before{content:"";position:absolute;inset:15px -12px -12px 12px;border:1px solid #24ad8b70;border-radius:45% 45% 35px 35px;transform:rotate(2deg)}
+.float-card{position:absolute;z-index:2;background:var(--surface);border:1px solid var(--border);border-radius:19px;padding:16px 18px;box-shadow:var(--shadow);animation:float 5s ease-in-out infinite}
+.float-card.one{left:-10px;top:65px}
+.float-card.two{right:-10px;bottom:38px;animation-delay:-2s}
+.float-icon{width:38px;height:38px;border-radius:12px;background:#c7f36b55;color:var(--green);display:grid;place-items:center;margin-bottom:8px}
+.float-card strong{display:block;font-size:.9rem}
+.float-card small{color:var(--muted)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.trust-strip{border-block:1px solid var(--border);background:var(--surface);padding:23px 0}
+.strip-inner{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap}
+.strip-item{display:flex;align-items:center;gap:10px;font-size:.87rem;font-weight:700}
+.strip-item i{color:var(--green);font-size:1.15rem}
+.section-head{max-width:660px;margin:0 auto 48px;text-align:center}
+.section-head p{margin-top:17px;font-size:1.02rem}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.service-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:29px;transition:transform .3s,border-color .3s,box-shadow .3s;position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-9px);border-color:#31b9957a;box-shadow:var(--shadow)}
+.service-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:19px;background:linear-gradient(135deg,#d8f8e9,#c7f36b65);color:#087f68;font-size:1.35rem;margin-bottom:24px}
+.service-card p{font-size:.92rem;margin:13px 0 22px}
+.text-link{color:var(--green);font-weight:800;font-size:.9rem;display:inline-flex;gap:9px;align-items:center}
+.text-link i{transition:transform .2s}
+.text-link:hover i{transform:translateX(5px)}
+.about{background:var(--surface);border-block:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-visual{position:relative;padding:0 25px 25px 0}
+.about-visual img{height:520px;width:100%;object-fit:cover;border-radius:28px}
+.experience-card{position:absolute;right:0;bottom:0;background:var(--lime);color:#17352f;border-radius:20px;padding:22px;box-shadow:var(--shadow);max-width:220px}
+.experience-card strong{display:block;font-family:Manrope;font-size:2rem;line-height:1.2}
+.about-copy>p{margin:20px 0}
+.check-list{list-style:none;display:grid;gap:15px;margin:27px 0}
+.check-list li{display:flex;align-items:flex-start;gap:12px;font-weight:600;font-size:.92rem}
+.check-list i{color:var(--green);margin-top:5px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px}
+.step{padding:30px 25px;border:1px solid var(--border);background:var(--surface);border-radius:23px}
+.step-num{font-family:Manrope;font-weight:800;font-size:2.7rem;color:#21ad8a3e;margin-bottom:20px}
+.step p{margin-top:12px;font-size:.93rem}
+.cta-section{padding:30px 0 95px}
+.cta-panel{position:relative;overflow:hidden;border-radius:34px;padding:65px;background:linear-gradient(125deg,#103c32,#087f68 60%,#1c9d7e);color:white}
+.cta-panel:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff25;border-radius:50%;right:-60px;top:-150px;box-shadow:0 0 0 45px #ffffff08,0 0 0 90px #ffffff05}
+.cta-panel h2{max-width:650px}
+.cta-panel p{color:#d4eae0;margin:18px 0 25px;max-width:570px}
+.cta-panel .eyebrow{color:var(--lime)}
+.cta-panel .eyebrow:before{background:var(--lime)}
+.cta-panel .btn{position:relative;z-index:1}
+.testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.quote-card{padding:27px;background:var(--surface);border:1px solid var(--border);border-radius:22px}
+.stars{color:#e8a62e;letter-spacing:3px;margin-bottom:17px}
+.quote-card blockquote{font-size:.94rem;line-height:1.8;margin-bottom:22px}
+.quote-person{display:flex;align-items:center;gap:12px}
+.quote-person img{width:45px;height:45px;border-radius:50%;object-fit:cover}
+.quote-person strong{display:block;font-size:.87rem}
+.quote-person small{color:var(--muted)}
+.faq-wrap{max-width:800px;margin:auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-question{width:100%;padding:23px 0;background:none;border:0;color:var(--text);display:flex;justify-content:space-between;gap:20px;text-align:left;font-weight:700;font-size:1rem}
+.faq-question i{color:var(--green);transition:transform .25s}
+.faq-answer{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s}
+.faq-answer>div{overflow:hidden}
+.faq-answer p{padding-bottom:0}
+.faq-item.open .faq-answer{grid-template-rows:1fr}
+.faq-item.open .faq-answer p{padding-bottom:22px}
+.faq-item.open .faq-question i{transform:rotate(45deg)}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px;align-items:start}
+.contact-copy p{margin:18px 0 28px}
+.contact-detail{display:flex;align-items:center;gap:14px;margin:19px 0}
+.contact-detail i{width:45px;height:45px;border-radius:15px;background:#bdeedb70;color:var(--green);display:grid;place-items:center}
+.contact-detail strong{display:block;font-size:.9rem}
+.contact-detail span{font-size:.85rem;color:var(--muted)}
+.contact-form{background:var(--surface);border:1px solid var(--border);padding:30px;border-radius:25px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:17px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font-size:.82rem;font-weight:700}
+.field input,.field select,.field textarea{width:100%;padding:13px 14px;background:var(--bg);color:var(--text);border:1px solid var(--border);border-radius:12px;outline:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px #087f6815}
+.field textarea{resize:vertical;min-height:100px}
+.contact-form .btn{width:100%;margin-top:18px}
+footer{background:#102c25;color:#e6f5ec;padding:65px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:45px}
+footer p,footer a,footer small{color:#a9c2b6;font-size:.88rem}
+footer .brand{color:white;margin-bottom:20px}
+footer h4{margin-bottom:18px}
+.footer-links{display:grid;gap:11px}
+footer a:hover{color:var(--lime)}
+.footer-bottom{border-top:1px solid #ffffff1b;padding-top:22px;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.reveal{opacity:0;transform:translateY(25px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.modal-backdrop{position:fixed;inset:0;background:#06150fd1;backdrop-filter:blur(7px);z-index:100;display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.modal-backdrop.show{display:flex;animation:fadeIn .2s}
+.modal{position:relative;width:min(520px,100%);background:var(--surface);color:var(--text);padding:35px;border-radius:27px;box-shadow:0 30px 100px #0005;animation:modalIn .35s;max-height:90vh;overflow:auto}
+.modal-close{position:absolute;right:17px;top:17px;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:var(--bg);color:var(--text)}
+.modal h2{font-size:2rem;padding-right:20px}
+.modal>p{margin:13px 0 22px}
+.modal .form-grid{grid-template-columns:1fr}
+.modal .field.full{grid-column:auto}
+.modal-kicker{display:inline-block;color:var(--green);font-weight:800;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:13px}
+.toast{position:fixed;right:20px;bottom:25px;z-index:150;max-width:360px;background:#103c32;color:white;padding:16px 20px;border-radius:15px;box-shadow:var(--shadow);transform:translateY(150%);transition:transform .35s}
+.toast.show{transform:translateY(0)}
+.chat-bubble{position:fixed;right:22px;bottom:22px;z-index:45;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#087f68,#21b894);color:white;border:0;box-shadow:0 12px 30px #087f6845;font-size:1.35rem;transition:transform .2s}
+.chat-bubble:hover{transform:scale(1.08)}
+.chat-panel{position:fixed;right:22px;bottom:92px;width:min(350px,calc(100vw - 44px));background:var(--surface);border:1px solid var(--border);border-radius:22px;padding:20px;box-shadow:var(--shadow);z-index:45;display:none}
+.chat-panel.show{display:block;animation:modalIn .2s}
+.chat-panel h3{margin-bottom:8px}
+.chat-panel p{font-size:.88rem;margin-bottom:15px}
+.chat-options{display:grid;gap:9px}
+.chat-options button{padding:11px 13px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--text);text-align:left;font-size:.87rem}
+.chat-options button:hover{border-color:var(--green)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes modalIn{from{opacity:0;transform:translateY(15px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+@media(max-width:950px){
+ .nav-links{gap:15px}.nav-links a{font-size:.82rem}.nav-actions>.btn{display:none}
+ .hero-grid{gap:25px}.hero-visual{min-height:410px}
+ .services-grid{grid-template-columns:repeat(2,1fr)}
+ .about-grid{gap:35px}.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+ section{padding:72px 0}.topbar-inner{justify-content:center;text-align:center}.topbar-inner span{display:none}
+ .nav{height:72px}.menu-toggle{display:grid}.nav-links{display:none;position:absolute;top:72px;left:0;right:0;padding:20px;background:var(--surface);border-bottom:1px solid var(--border);flex-direction:column;align-items:stretch;gap:0}
+ .nav-links.open{display:flex}.nav-links a:not(.btn){padding:13px 10px;border-bottom:1px solid var(--border)}
+ .nav-links .btn{margin-top:14px}.nav-actions{margin-left:auto}
+ .hero{padding-top:50px}.hero-grid{grid-template-columns:1fr}
+ .hero-visual{min-height:420px;margin:12px 12px 0 5px}.hero-image{inset:0 0 0 10px;width:calc(100% - 10px)}
+ .float-card.one{left:-12px;top:35px}.float-card.two{right:-8px;bottom:22px}
+ .strip-inner{justify-content:flex-start;display:grid;grid-template-columns:1fr 1fr}
+ .services-grid,.steps,.testimonial-grid{grid-template-columns:1fr}
+ .about-grid,.contact-grid{grid-template-columns:1fr}
+ .about-visual img{height:400px}.experience-card{right:-5px}
+ .cta-panel{padding:38px 25px}
+ .footer-grid{grid-template-columns:1fr 1fr;gap:28px}
+ .contact-form{padding:22px}
+ .chat-bubble{right:15px;bottom:15px}
+}
+@media(max-width:430px){
+ .container{width:calc(100% - 30px)}
+ .hero-buttons .btn{width:100%}
+ .form-grid{grid-template-columns:1fr}
+ .field.full{grid-column:auto}
+ .footer-grid{grid-template-columns:1fr}
+ .modal{padding:27px 21px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+ <div class="container topbar-inner">
+  <span><i class="fa-solid fa-heart" style="margin-right:7px;color:#c7f36b"></i> Compassionate care. More comfortable days.</span>
+  <a href="#contact">Have questions? Let's talk <i class="fa-solid fa-arrow-right"></i></a>
+ </div>
+</div>
+
+<header class="nav-wrap">
+ <div class="container nav">
+  <a href="#home" class="brand">
+   <span class="brand-icon"><i class="fa-solid fa-house-medical"></i></span>
+   <span>Ohio Pro Care<small>COMPASSIONATE CARE SERVICES</small></span>
+  </a>
+  <nav class="nav-links" id="navLinks">
+   <a href="#home">Home</a><a href="#services">Our Services</a><a href="#about">About Us</a><a href="#process">How It Works</a><a href="#faq">FAQs</a>
+   <button class="btn btn-primary" onclick="openCareModal()">Request Care <i class="fa-solid fa-arrow-right"></i></button>
+  </nav>
+  <div class="nav-actions">
+   <button class="icon-btn" id="themeToggle" aria-label="Change theme" title="Change theme"><i class="fa-solid fa-moon"></i></button>
+   <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Open navigation"><i class="fa-solid fa-bars"></i></button>
+  </div>
+ </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container hero-grid">
+  <div class="hero-copy reveal">
+   <div class="eyebrow">CARE THAT FEELS LIKE HOME</div>
+   <h1>More comfort.<br>More confidence.<br><span class="gradient-text">More life.</span></h1>
+   <p>Personalized support for the people who matter most. Discover thoughtful care that helps individuals feel comfortable, supported, and more independent in the place they love.</p>
+   <div class="hero-buttons">
+    <button class="btn btn-primary" onclick="openCareModal()">Let's Find Your Care <i class="fa-solid fa-arrow-right"></i></button>
+    <a href="#services" class="btn btn-secondary"><i class="fa-solid fa-circle-play"></i> Explore Services</a>
+   </div>
+   <div class="trust-row">
+    <div class="avatars">
+     <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=90&q=80" alt="Care professional">
+     <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=90&q=80" alt="Care team member">
+     <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=90&q=80" alt="Support professional">
+    </div>
+    <div class="trust-copy">A more personal approach<span>Care centered around your needs</span></div>
+   </div>
+  </div>
+  <div class="hero-visual reveal">
+   <img class="hero-image" src="https://images.unsplash.com/photo-1576765608866-5b51046452d5?auto=format&fit=crop&w=1100&q=85" alt="Caregiver spending time with an older adult">
+   <div class="float-card one">
+    <div class="float-icon"><i class="fa-solid fa-heart"></i></div>
+    <strong>Care with compassion</strong><small>People come first, always.</small>
+   </div>
+   <div class="float-card two">
+    <div class="float-icon"><i class="fa-solid fa-house"></i></div>
+    <strong>Comfort of home</strong><small>Support for everyday living.</small>
+   </div>
+  </div>
+ </div>
+</section>
+
+<div class="trust-strip">
+ <div class="container strip-inner">
+  <div class="strip-item"><i class="fa-solid fa-hand-holding-heart"></i> Person-centered support</div>
+  <div class="strip-item"><i class="fa-solid fa-calendar-check"></i> Flexible care options</div>
+  <div class="strip-item"><i class="fa-solid fa-people-group"></i> Family-focused approach</div>
+  <div class="strip-item"><i class="fa-solid fa-house-chimney"></i> Comfort at home</div>
+ </div>
+</div>
+
+<section id="services">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">HOW WE CAN HELP</div>
+   <h2>Support that fits <span class="gradient-text">your life.</span></h2>
+   <p>Every person is different. Explore support options and start a conversation about the care that makes sense for you or your loved one.</p>
+  </div>
+  <div class="services-grid">
+   <article class="service-card reveal">
+    <div class="service-icon"><i class="fa-solid fa-hand-holding-heart"></i></div>
+    <h3>Personal Care</h3>
+    <p>Respectful help with everyday personal routines while protecting privacy, dignity, and independence.</p>
+    <a href="#contact" class="text-link" onclick="selectService('Personal Care')">Explore this service <i class="fa-solid fa-arrow-right"></i></a>
+   </article>
+   <article class="service-card reveal">
+    <div class="service-icon"><i class="fa-solid fa-people-roof"></i></div>
+    <h3>Companion Care</h3>
+    <p>Friendly company, meaningful conversation, and support with activities that make each day brighter.</p>
+    <a href="#contact" class="text-link" onclick="selectService('Companion Care')">Explore this service <i class="fa-solid fa-arrow-right"></i></a>
+   </article>
+   <article class="service-card reveal">
+    <div class="service-icon"><i class="fa-solid fa-broom"></i></div>
+    <h3>Homemaking Support</h3>
+    <p>Help with light household tasks to maintain a welcoming, organized, and comfortable living space.</p>
+    <a href="#contact" class="text-link" onclick="selectService('Homemaking Support')">Explore this service <i class="fa-solid fa-arrow-right"></i></a>
+   </article>
+   <article class="service-card reveal">
+    <div class="service-icon"><i class="fa-solid fa-utensils"></i></div>
+    <h3>Meal Assistance</h3>
+    <p>Everyday meal preparation and routine support tailored to individual preferences and needs.</p>
+    <a href="#contact" class="text-link" onclick="selectService('Meal Assistance')">Explore this service <i class="fa-solid fa-arrow-right"></i></a>
+   </article>
+   <article class="service-card reveal">
+    <div class="service-icon"><i class="fa-solid fa-person-walking"></i></div>
+    <h3>Daily Living Support</h3>
+    <p>Thoughtful assistance with daily activities and routines that help people live with greater confidence.</p>
+    <a href="#contact" class="text-link" onclick="selectService('Daily Living Support')">Explore this service <i class="fa-solid fa-arrow-right"></i></a>
+   </article>
+   <article class="service-card reveal">
+    <div class="service-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+    <h3>Personalized Care Planning</h3>
+    <p>Talk through your circumstances, priorities, and preferred schedule to explore an appropriate support plan.</p>
+    <a href="#contact" class="text-link" onclick="selectService('Personalized Care Planning')">Explore this service <i class="fa-solid fa-arrow-right"></i></a>
+   </article>
+  </div>
+ </div>
+</section>
+
+<section class="about" id="about">
+ <div class="container about-grid">
+  <div class="about-visual reveal">
+   <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=85" alt="Smiling care professional in a bright environment" loading="lazy">
+   <div class="experience-card"><strong><i class="fa-solid fa-heart"></i></strong><b>Care that sees the person</b><p style="color:#315749;font-size:.84rem;margin-top:5px">Every story matters. Every need deserves attention.</p></div>
+  </div>
+  <div class="about-copy reveal">
+   <div class="eyebrow">CARE IS PERSONAL</div>
+   <h2>Because home is where <span class="gradient-text">life happens.</span></h2>
+   <p>Finding care for yourself or a loved one can feel overwhelming. Our goal is to make that first step feel easier with a welcoming conversation and support centered on individual needs.</p>
+   <ul class="check-list">
+    <li><i class="fa-solid fa-circle-check"></i><span>Respect for personal preferences, routines, and dignity.</span></li>
+    <li><i class="fa-solid fa-circle-check"></i><span>Care discussions focused on individual circumstances.</span></li>
+    <li><i class="fa-solid fa-circle-check"></i><span>Clear communication throughout the process.</span></li>
+    <li><i class="fa-solid fa-circle-check"></i><span>A welcoming place to start asking questions.</span></li>
+   </ul>
+   <button class="btn btn-primary" onclick="openCareModal()">Talk About Your Needs <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+ </div>
+</section>
+
+<section id="process">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">A SIMPLE FIRST STEP</div>
+   <h2>Getting started feels <span class="gradient-text">easy.</span></h2>
+   <p>Start a conversation, explore the available options, and decide on your next step without pressure.</p>
+  </div>
+  <div class="steps">
+   <article class="step reveal"><div class="step-num">01</div><h3>Tell us what you need</h3><p>Share a little about the person who needs support and the type of help you're exploring.</p></article>
+   <article class="step reveal"><div class="step-num">02</div><h3>Explore your options</h3><p>Discuss your priorities, desired schedule, and the types of services that may fit.</p></article>
+   <article class="step reveal"><div class="step-num">03</div><h3>Plan the next step</h3><p>Confirm the appropriate next steps, subject to service availability and eligibility.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="cta-section">
+ <div class="container">
+  <div class="cta-panel reveal">
+   <div class="eyebrow">YOU DON'T HAVE TO FIGURE IT OUT ALONE</div>
+   <h2>Let's find a little more peace of mind.</h2>
+   <p>Whether you know exactly what you need or are just beginning to explore, we're here to help you start the conversation.</p>
+   <button class="btn btn-lime" onclick="openCareModal()">Request a Care Conversation <i class="fa-solid fa-arrow-right"></i></button>
+  </div>
+ </div>
+</section>
+
+<section id="testimonials">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">KINDNESS MAKES A DIFFERENCE</div>
+   <h2>Care should feel <span class="gradient-text">human.</span></h2>
+   <p>Thoughtful support begins by listening, communicating clearly, and respecting every person's needs.</p>
+  </div>
+  <div class="testimonial-grid">
+   <article class="quote-card reveal"><div class="stars">★★★★★</div><blockquote>“The most important thing is feeling heard. A thoughtful care conversation can help families understand their options and plan their next step.”</blockquote><div class="quote-person"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=100&q=80" alt="" loading="lazy"><div><strong>Family perspective</strong><small>Care journey</small></div></div></article>
+   <article class="quote-card reveal"><div class="stars">★★★★★</div><blockquote>“Support should fit into everyday life. Clear communication and respect for familiar routines can make a meaningful difference.”</blockquote><div class="quote-person"><img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=100&q=80" alt="" loading="lazy"><div><strong>Care perspective</strong><small>Everyday support</small></div></div></article>
+   <article class="quote-card reveal"><div class="stars">★★★★★</div><blockquote>“It's okay not to have all the answers. Starting with a conversation is a practical way to learn about care options.”</blockquote><div class="quote-person"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=100&q=80" alt="" loading="lazy"><div><strong>Community perspective</strong><small>Finding care</small></div></div></article>
+  </div>
+  <p style="text-align:center;font-size:.8rem;margin-top:20px">Illustrative sample quotes — replace with approved, genuine client testimonials before publishing.</p>
+ </div>
+</section>
+
+<section id="faq">
+ <div class="container">
+  <div class="section-head reveal">
+   <div class="eyebrow">QUESTIONS, ANSWERED</div>
+   <h2>A little clarity goes <span class="gradient-text">a long way.</span></h2>
+   <p>Here are a few common questions to help you get started.</p>
+  </div>
+  <div class="faq-wrap reveal">
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">What types of care can I ask about?<i class="fa-solid fa-plus"></i></button><div class="faq-answer"><div><p>You can ask about personal care, companionship, homemaking, meal assistance, and other daily living support. Actual services depend on what the agency offers and your circumstances.</p></div></div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">How do I get started?<i class="fa-solid fa-plus"></i></button><div class="faq-answer"><div><p>Submit the care request form or contact the agency directly. Explain the type of support you are looking for, and ask about availability and the next steps.</p></div></div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">Can care be tailored to an individual's needs?<i class="fa-solid fa-plus"></i></button><div class="faq-answer"><div><p>You can discuss preferences, routines, and desired support with the care team to find out which options may be appropriate and available.</p></div></div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">Does insurance or Medicaid cover services?<i class="fa-solid fa-plus"></i></button><div class="faq-answer"><div><p>Coverage varies by service, program, and eligibility. Contact the agency to confirm accepted payment options and any applicable coverage requirements before making a decision.</p></div></div></div>
+   <div class="faq-item"><button class="faq-question" aria-expanded="false">Can I ask questions before committing?<i class="fa-solid fa-plus"></i></button><div class="faq-answer"><div><p>Absolutely. Use the initial conversation to ask about services, costs, schedules, eligibility, and anything else you need to understand before proceeding.</p></div></div></div>
+  </div>
+ </div>
+</section>
+
+<section id="contact" style="background:var(--surface);border-top:1px solid var(--border)">
+ <div class="container contact-grid">
+  <div class="contact-copy reveal">
+   <div class="eyebrow">LET'S TALK</div>
+   <h2>Start with a simple <span class="gradient-text">hello.</span></h2>
+   <p>Tell us a little about what you're looking for. We'll help you identify the next step once the form is connected to the agency's contact system.</p>
+   <div class="contact-detail"><i class="fa-solid fa-phone"></i><div><strong>Call our team</strong><span>Replace with the verified agency phone number</span></div></div>
+   <div class="contact-detail"><i class="fa-solid fa-envelope"></i><div><strong>Email us</strong><span>Replace with the verified agency email</span></div></div>
+   <div class="contact-detail"><i class="fa-solid fa-location-dot"></i><div><strong>Serving Ohio</strong><span>Confirm the actual agency service area</span></div></div>
+  </div>
+  <form class="contact-form reveal" id="careForm">
+   <h3 style="margin-bottom:7px">Request a care conversation</h3>
+   <p style="font-size:.88rem;margin-bottom:22px">Fields marked * are required.</p>
+   <div class="form-grid">
+    <div class="field"><label for="name">Your name *</label><input id="name" name="name" autocomplete="name" required placeholder="Full name"></div>
+    <div class="field"><label for="email">Email address *</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"></div>
+    <div class="field"><label for="phone">Phone number</label><input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="Your phone"></div>
+    <div class="field"><label for="service">Service of interest *</label><select id="service" name="service" required><option value="">Choose a service</option><option>Personal Care</option><option>Companion Care</option><option>Homemaking Support</option><option>Meal Assistance</option><option>Daily Living Support</option><option>Personalized Care Planning</option><option>Other / Not sure yet</option></select></div>
+    <div class="field full"><label for="message">How can we help?</label><textarea id="message" name="message" placeholder="Share only the details needed to discuss your request. Please do not include sensitive medical information."></textarea></div>
+   </div>
+   <button class="btn btn-primary" type="submit">Send Care Request <i class="fa-solid fa-arrow-right"></i></button>
+   <p style="font-size:.77rem;margin-top:12px">Demo form: connect a secure form service or backend before accepting real requests.</p>
+  </form>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="container">
+  <div class="footer-grid">
+   <div><a href="#home" class="brand"><span class="brand-icon"><i class="fa-solid fa-house-medical"></i></span><span>Ohio Pro Care<small>COMPASSIONATE CARE SERVICES</small></span></a><p>Thoughtful care conversations. Personalized support. A more comfortable everyday life.</p></div>
+   <div><h4>Explore</h4><div class="footer-links"><a href="#about">About Us</a><a href="#services">Our Services</a><a href="#process">How It Works</a><a href="#testimonials">Testimonials</a></div></div>
+   <div><h4>Helpful Links</h4><div class="footer-links"><a href="#faq">FAQs</a><a href="#contact">Contact</a><a href="#" onclick="showToast('Add your verified privacy policy URL before publishing.');return false">Privacy Policy</a><a href="#" onclick="showToast('Add your verified terms URL before publishing.');return false">Terms of Use</a></div></div>
+   <div><h4>Need some help?</h4><p>Have questions about care? Start a conversation with our team.</p><a href="#contact" class="text-link" style="margin-top:15px;color:var(--lime)">Get in touch <i class="fa-solid fa-arrow-right"></i></a></div>
+  </div>
+  <div class="footer-bottom"><small>© <span id="year"></span> Ohio Pro Care Services. All rights reserved.</small><small>Compassion, respect, and dignity in every conversation.</small></div>
+ </div>
+</footer>
+
+<!-- Care request modal -->
+<div class="modal-backdrop" id="careModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+ <div class="modal">
+  <button class="modal-close" onclick="closeModal('careModal')" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></button>
+  <span class="modal-kicker">YOUR NEXT STEP STARTS HERE</span>
+  <h2 id="modalTitle">Let's talk about <span class="gradient-text">care.</span></h2>
+  <p>Tell us how to reach you and we'll prepare your request for the agency.</p>
+  <form id="modalForm">
+   <div class="form-grid">
+    <div class="field"><label for="modalName">Your name *</label><input id="modalName" name="name" required autocomplete="name" placeholder="Full name"></div>
+    <div class="field"><label for="modalEmail">Email address *</label><input id="modalEmail" name="email" type="email" required autocomplete="email" placeholder="you@example.com"></div>
+    <div class="field"><label for="modalService">What support are you exploring? *</label><select id="modalService" name="service" required><option value="">Choose a service</option><option>Personal Care</option><option>Companion Care</option><option>Homemaking Support</option><option>Meal Assistance</option><option>Daily Living Support</option><option>Personalized Care Planning</option><option>Other / Not sure yet</option></select></div>
+   </div>
+   <button class="btn btn-primary" type="submit" style="width:100%;margin-top:20px">Continue <i class="fa-solid fa-arrow-right"></i></button>
+   <p style="font-size:.76rem;margin-top:12px">This demo does not send your information until connected to a backend.</p>
+  </form>
+ </div>
+</div>
+
+<!-- Exit-intent popup -->
+<div class="modal-backdrop" id="exitModal" role="dialog" aria-modal="true" aria-labelledby="exitTitle">
+ <div class="modal">
+  <button class="modal-close" onclick="closeModal('exitModal')" aria-label="Close dialog"><i class="fa-solid fa-xmark"></i></button>
+  <span class="modal-kicker"><i class="fa-solid fa-heart"></i> HERE WHEN YOU'RE READY</span>
+  <h2 id="exitTitle">Still exploring your <span class="gradient-text">options?</span></h2>
+  <p>You don't need to have everything figured out. Start with a no-pressure conversation about the support you're looking for.</p>
+  <button class="btn btn-primary" style="width:100%" onclick="closeModal('exitModal');openCareModal()">Let's Talk About Care <i class="fa-solid fa-arrow-right"></i></button>
+  <button class="btn btn-secondary" style="width:100%;margin-top:10px" onclick="closeModal('exitModal')">I'll come back later</button>
+ </div>
+</div>
+
+<!-- Interactive quick-help widget -->
+<div class="chat-panel" id="chatPanel">
+ <h3>How can we help? <i class="fa-solid fa-heart" style="color:var(--green)"></i></h3>
+ <p>Choose a topic to find your next step.</p>
+ <div class="chat-options">
+  <button onclick="chooseHelp('services')">Explore care services</button>
+  <button onclick="chooseHelp('cost')">Ask about costs and coverage</button>
+  <button onclick="chooseHelp('contact')">Contact the care team</button>
+ </div>
+</div>
+<button class="chat-bubble" id="chatToggle" aria-label="Open quick help"><i class="fa-regular fa-comments"></i></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const $ = (s, root=document) => root.querySelector(s);
+const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+
+$("#year").textContent = new Date().getFullYear();
+
+// Mobile navigation
+$("#menuToggle").addEventListener("click", () => {
+ const nav = $("#navLinks");
+ nav.classList.toggle("open");
+ $("#menuToggle").innerHTML = nav.classList.contains("open")
+  ? '<i class="fa-solid fa-xmark"></i>'
+  : '<i class="fa-solid fa-bars"></i>';
+});
+$$('#navLinks a').forEach(a => a.addEventListener('click', () => {
+ $("#navLinks").classList.remove("open");
+ $("#menuToggle").innerHTML = '<i class="fa-solid fa-bars"></i>';
+}));
+
+// Theme system: manual toggle and automatic daytime/nighttime mode.
+// Automatic mode uses the visitor's device local time.
+let themeMode = "auto";
+function applyTheme(){
+ const hour = new Date().getHours();
+ const dark = themeMode === "dark" || (themeMode === "auto" && (hour >= 19 || hour < 7));
+ document.body.classList.toggle("dark", dark);
+ $("#themeToggle").innerHTML = dark
+  ? '<i class="fa-solid fa-sun"></i>'
+  : '<i class="fa-solid fa-moon"></i>';
+ $("#themeToggle").title = "Current theme: " + themeMode + ". Click to change.";
+}
+$("#themeToggle").addEventListener("click", () => {
+ themeMode = themeMode === "auto" ? "dark" : themeMode === "dark" ? "light" : "auto";
+ applyTheme();
+ showToast("Theme: " + themeMode + ". Click again to cycle modes.");
+});
+applyTheme();
+
+// Reveal animations on scroll
+if ("IntersectionObserver" in window) {
+ const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+   if(entry.isIntersecting){
+    entry.target.classList.add("visible");
+    observer.unobserve(entry.target);
+   }
+  });
+ }, {threshold:.12});
+ $$(".reveal").forEach(el => observer.observe(el));
+} else {
+ $$(".reveal").forEach(el => el.classList.add("visible"));
+}
+
+// FAQ accordion
+$$(".faq-question").forEach(btn => {
+ btn.addEventListener("click", () => {
+  const item = btn.closest(".faq-item");
+  const wasOpen = item.classList.contains("open");
+  $$(".faq-item").forEach(el => {
+   el.classList.remove("open");
+   $(".faq-question",el).setAttribute("aria-expanded","false");
+  });
+  if(!wasOpen){
+   item.classList.add("open");
+   btn.setAttribute("aria-expanded","true");
+  }
+ });
+});
+
+// Modal management
+let lastFocus = null;
+function openModal(id){
+ lastFocus = document.activeElement;
+ $("#"+id).classList.add("show");
+ document.body.style.overflow = "hidden";
+ const first = $("input,select,button",$("#"+id));
+ if(first) setTimeout(()=>first.focus(),50);
+}
+function closeModal(id){
+ $("#"+id).classList.remove("show");
+ if(!$(".modal-backdrop.show")) document.body.style.overflow = "";
+ if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+function openCareModal(){ openModal("careModal"); }
+$$(".modal-backdrop").forEach(backdrop=>{
+ backdrop.addEventListener("click",e=>{
+  if(e.target===backdrop) closeModal(backdrop.id);
+ });
+});
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  $$(".modal-backdrop.show").forEach(el=>closeModal(el.id));
+  $("#chatPanel").classList.remove("show");
+ }
+});
+
+// Preselect services when users click a service card.
+function selectService(service){
+ $("#service").value=service;
+}
+
+// Toast messages
+let toastTimer;
+function showToast(message){
+ const toast=$("#toast");
+ toast.textContent=message;
+ toast.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>toast.classList.remove("show"),4500);
+}
+
+// DEMO SUBMISSION: intentionally does not send or save personal information.
+// Replace with a secure backend or a trusted form service before going live.
+function demoSubmit(form, label){
+ if(!form.reportValidity()) return;
+ showToast(label+" captured in this demo only. Connect a secure backend to deliver real requests.");
+ form.reset();
+}
+$("#careForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ demoSubmit(e.currentTarget,"Care request");
+});
+$("#modalForm").addEventListener("submit",e=>{
+ e.preventDefault();
+ if(!e.currentTarget.reportValidity()) return;
+ const selected=$("#modalService").value;
+ $("#service").value=selected;
+ closeModal("careModal");
+ $("#contact").scrollIntoView({behavior:"smooth"});
+ showToast("Your details are not transmitted. Complete the contact form after connecting the website to a secure backend.");
+});
+
+// Quick-help widget
+$("#chatToggle").addEventListener("click",()=>{
+ $("#chatPanel").classList.toggle("show");
+});
+function chooseHelp(topic){
+ $("#chatPanel").classList.remove("show");
+ if(topic==="services"){
+  $("#services").scrollIntoView({behavior:"smooth"});
+ } else if(topic==="cost"){
+  $("#faq").scrollIntoView({behavior:"smooth"});
+  showToast("Ask the agency to confirm pricing, eligibility, and coverage.");
+ } else {
+  $("#contact").scrollIntoView({behavior:"smooth"});
+ }
+}
+
+// Exit-intent popup on desktop only. Shows once per page load.
+// No tracking cookies or browser storage are used.
+let exitShown=false;
+document.addEventListener("mouseout",e=>{
+ if(window.innerWidth>760 && e.clientY<=0 && !exitShown &&
+    !$(".modal-backdrop.show")){
+  exitShown=true;
+  openModal("exitModal");
+ }
+});
+
+// Keyboard accessibility: basic focus containment in active modal.
+document.addEventListener("keydown",e=>{
+ if(e.key!=="Tab") return;
+ const modal=$(".modal-backdrop.show .modal");
+ if(!modal) return;
+ const focusable=$$("button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),a[href]",modal)
+  .filter(el=>el.offsetParent!==null);
+ if(!focusable.length) return;
+ const first=focusable[0], last=focusable[focusable.length-1];
+ if(e.shiftKey && document.activeElement===first){e.preventDefault();last.focus();}
+ else if(!e.shiftKey && document.activeElement===last){e.preventDefault();first.focus();}
+});
+</script>
+</body>
+</html>

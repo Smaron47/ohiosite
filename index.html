@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111f">
+  <meta name="description" content="Choose and preview an Ohio Pro Care website concept.">
+  <title>Ohio Pro Care | Choose a Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #07111f;
+      --panel: #101d2d;
+      --text: #f4f7fb;
+      --muted: #a8b5c6;
+      --line: rgba(202, 220, 240, .13);
+      --cyan: #36d6e8;
+      --blue: #5985ff;
+      --lime: #d4f36b;
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 12% 12%, rgba(54, 214, 232, .15), transparent 36rem),
+        radial-gradient(ellipse at 88% 28%, rgba(89, 133, 255, .16), transparent 34rem),
+        var(--bg);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .shell { width: min(1120px, calc(100% - 40px)); margin: auto; }
+    .topbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 25px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font: 800 1rem Manrope, sans-serif; }
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border: 1px solid rgba(54, 214, 232, .35);
+      border-radius: 14px;
+      color: var(--cyan);
+      background: rgba(54, 214, 232, .1);
+    }
+    .brand small { display: block; color: var(--muted); font: 600 .68rem "DM Sans", sans-serif; letter-spacing: .13em; text-transform: uppercase; }
+    .top-note { color: var(--muted); font-size: .82rem; }
+    main { padding: clamp(45px, 9vw, 100px) 0 75px; }
+    .intro { max-width: 710px; margin: 0 auto 42px; text-align: center; }
+    .eyebrow { color: var(--cyan); font-size: .74rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+    h1, h2, p { margin-top: 0; }
+    h1 { margin: 15px 0; font: 800 clamp(2.5rem, 6vw, 4.6rem)/1.06 Manrope, sans-serif; letter-spacing: -.055em; }
+    h1 span { color: transparent; background: linear-gradient(100deg, var(--cyan), #7d9bff 72%); background-clip: text; -webkit-background-clip: text; }
+    .intro p { max-width: 580px; margin: 0 auto; color: var(--muted); font-size: 1.05rem; }
+    .picker { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .site-card {
+      position: relative;
+      display: flex;
+      min-height: 196px;
+      flex-direction: column;
+      overflow: hidden;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(20, 36, 55, .94), rgba(13, 25, 41, .9));
+      text-decoration: none;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .site-card::after {
+      position: absolute;
+      right: -48px;
+      bottom: -92px;
+      width: 190px;
+      height: 190px;
+      border: 1px solid rgba(54, 214, 232, .18);
+      border-radius: 50%;
+      content: "";
+      pointer-events: none;
+    }
+    .site-card:hover, .site-card:focus-visible {
+      transform: translateY(-4px);
+      border-color: rgba(54, 214, 232, .65);
+      box-shadow: 0 20px 55px rgba(0, 0, 0, .25);
+    }
+    .site-card:focus-visible, button:focus-visible { outline: 3px solid var(--lime); outline-offset: 4px; }
+    .card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .index-tag { color: var(--cyan); font-size: .74rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .arrow { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--lime); }
+    .site-card h2 { margin: 15px 0 8px; font: 750 1.24rem/1.25 Manrope, sans-serif; }
+    .site-card p { max-width: 440px; margin: 0; color: var(--muted); font-size: .91rem; }
+    .dialog {
+      width: min(880px, calc(100% - 32px));
+      max-width: none;
+      max-height: min(92vh, 850px);
+      padding: 0;
+      overflow: auto;
+      border: 1px solid rgba(190, 214, 241, .2);
+      border-radius: 26px;
+      color: var(--text);
+      background: #0c1828;
+      box-shadow: 0 35px 110px rgba(0, 0, 0, .65);
+    }
+    .dialog::backdrop { background: rgba(2, 8, 17, .78); backdrop-filter: blur(8px); }
+    .dialog-inner { padding: clamp(22px, 5vw, 42px); }
+    .dialog-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; margin-bottom: 24px; }
+    .dialog-head h2 { margin: 8px 0 7px; font: 800 clamp(1.65rem, 4vw, 2.4rem)/1.15 Manrope, sans-serif; letter-spacing: -.04em; }
+    .dialog-head p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .close-button {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--text);
+      background: var(--panel);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+    .dialog .site-card { min-height: 168px; padding: 19px; background: linear-gradient(145deg, #14243a, #101b2b); }
+    .dialog .site-card h2 { font-size: 1.08rem; }
+    .dialog .site-card p { font-size: .84rem; }
+    .dialog-note { margin: 20px 0 0; color: #8190a4; font-size: .78rem; text-align: center; }
+    footer { padding: 20px 0 30px; color: #8190a4; font-size: .78rem; text-align: center; }
+    @media (max-width: 650px) {
+      .topbar { align-items: flex-start; }
+      .top-note { max-width: 130px; text-align: right; }
+      main { padding-top: 42px; }
+      .picker { grid-template-columns: 1fr; }
+      .site-card { min-height: 170px; }
+      .dialog .picker { grid-template-columns: 1fr; }
+      .dialog .site-card { min-height: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="brand" href="index.html" aria-label="Ohio Pro Care home">
+      <span class="brand-mark" aria-hidden="true">O</span>
+      <span>OHIO PRO CARE<small>Website concepts</small></span>
+    </a>
+    <span class="top-note">Select a page to open its full experience</span>
+  </header>
+
+  <main class="shell">
+    <section class="intro" aria-labelledby="page-title">
+      <span class="eyebrow">One place. Every concept.</span>
+      <h1 id="page-title">Choose your <span>experience.</span></h1>
+      <p>Pick one of the pages below to open the complete website concept. You can return here anytime to switch between them.</p>
+    </section>
+
+    <nav class="picker" aria-label="Website concepts">
+      <a class="site-card" href="index0.html">
+        <span class="card-top"><span class="index-tag">Index 0</span><span class="arrow" aria-hidden="true">↗</span></span>
+        <h2>Ohio Pro Plumbing</h2>
+        <p>Bold plumbing-service concept with service details, pricing tools, and a dark/light theme.</p>
+      </a>
+      <a class="site-card" href="index1.html">
+        <span class="card-top"><span class="index-tag">Index 1</span><span class="arrow" aria-hidden="true">↗</span></span>
+        <h2>Compassionate Care at Home</h2>
+        <p>A separate home-care concept focused on comfort, everyday support, and family peace of mind.</p>
+      </a>
+      <a class="site-card" href="index2.html">
+        <span class="card-top"><span class="index-tag">Index 2</span><span class="arrow" aria-hidden="true">↗</span></span>
+        <h2>Plumbing &amp; Drain Experts</h2>
+        <p>A clean, modern plumbing landing page with multiple hero layouts and a clear quote journey.</p>
+      </a>
+      <a class="site-card" href="index3.html">
+        <span class="card-top"><span class="index-tag">Index 3</span><span class="arrow" aria-hidden="true">↗</span></span>
+        <h2>Interactive Plumbing Experience</h2>
+        <p>A feature-rich plumbing concept with interactive tools, service dispatch, and visual sections.</p>
+      </a>
+    </nav>
+  </main>
+
+  <footer class="shell">Ohio Pro Care · Website concept selector</footer>
+
+  <dialog class="dialog" id="welcome-dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+    <div class="dialog-inner">
+      <div class="dialog-head">
+        <div>
+          <span class="eyebrow">Welcome</span>
+          <h2 id="dialog-title">Which page would you like to view?</h2>
+          <p id="dialog-description">Choose an index to open that complete HTML page.</p>
+        </div>
+        <button class="close-button" type="button" aria-label="Close page selector" id="close-dialog">×</button>
+      </div>
+      <nav class="picker" aria-label="Choose an index">
+        <a class="site-card" href="index0.html"><span class="card-top"><span class="index-tag">Index 0</span><span class="arrow" aria-hidden="true">↗</span></span><h2>Ohio Pro Plumbing</h2><p>Plumbing services, pricing tools, and theme switching.</p></a>
+        <a class="site-card" href="index1.html"><span class="card-top"><span class="index-tag">Index 1</span><span class="arrow" aria-hidden="true">↗</span></span><h2>Compassionate Care at Home</h2><p>A home-care concept for comfort and everyday support.</p></a>
+        <a class="site-card" href="index2.html"><span class="card-top"><span class="index-tag">Index 2</span><span class="arrow" aria-hidden="true">↗</span></span><h2>Plumbing &amp; Drain Experts</h2><p>Modern plumbing landing page with selectable hero layouts.</p></a>
+        <a class="site-card" href="index3.html"><span class="card-top"><span class="index-tag">Index 3</span><span class="arrow" aria-hidden="true">↗</span></span><h2>Interactive Plumbing Experience</h2><p>Feature-rich plumbing concept with interactive tools.</p></a>
+      </nav>
+      <p class="dialog-note">You can close this window and use the page cards whenever you want to switch.</p>
+    </div>
+  </dialog>
+
+  <script>
+    const welcomeDialog = document.querySelector("#welcome-dialog");
+    document.querySelector("#close-dialog").addEventListener("click", () => welcomeDialog.close());
+    welcomeDialog.showModal();
+  </script>
+</body>
+</html>
